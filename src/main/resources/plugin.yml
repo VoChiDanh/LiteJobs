@@ -1,0 +1,12 @@
+name: LiteJobs
+version: '${project.version}'
+main: net.danh.litejobs.LiteJobs
+api-version: 1.13
+authors: [ VoChiDanh ]
+commands:
+  LiteJobs:
+    description: Jobs Command
+permissions:
+  litejobs.admin:
+    description: Admin permission
+    default: op

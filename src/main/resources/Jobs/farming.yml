@@ -1,0 +1,38 @@
+displayname: "&bFarmer"
+level: farming
+item:
+  mmoitems:
+    type: TOOL
+    id: GAYNONGDAN
+listeners:
+  block-break:
+    WHEAT:
+      regen: 20
+      regen_block: AIR
+      command:
+        - "eco give %player_name% 1"
+    CARROTS:
+      regen: 20
+      regen_block: AIR
+      command:
+        - "eco give %player_name% 1"
+    POTATOES:
+      regen: 20
+      regen_block: AIR
+      command:
+        - "eco give %player_name% 1"
+    BEETROOTS:
+      regen: 20
+      regen_block: AIR
+      command:
+        - "eco give %player_name% 1"
+    NETHER_WART:
+      regen: 20
+      regen_block: AIR
+      command:
+        - "eco give %player_name% 1"
+    CACTUS:
+      regen: 20
+      regen_block: AIR
+      command:
+        - "eco give %player_name% 1"

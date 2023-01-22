@@ -1,0 +1,5 @@
+level:
+  mining:
+    max_xp: "<level> * 1000"
+  farming:
+    max_xp: "<level> * 5000"

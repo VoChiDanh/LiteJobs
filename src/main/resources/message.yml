@@ -1,0 +1,3 @@
+command:
+  reload: "&bReloaded"
+  select: "&bYou were selected job <name>"
