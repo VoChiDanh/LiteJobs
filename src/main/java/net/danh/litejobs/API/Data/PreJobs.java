@@ -36,7 +36,7 @@ public class PreJobs {
                         if (levels[i] != null) {
                             String[] level = levels[i].split("=");
                             if (level[0].equalsIgnoreCase(job)) {
-                                atomicLevel.set(Utils.getLong(level[1]));
+                                atomicLevel.set(Math.max(Utils.getLong(level[1]), 1));
                             }
                         }
                         if (XPs[i] != null) {
@@ -67,7 +67,7 @@ public class PreJobs {
             for (String s : jobs) {
                 s = s.replace(".yml", "");
                 if (!PreJobs.level.containsKey(p.getName() + "_" + s)) {
-                    PreJobs.level.put(p.getName() + "_" + s, 1L);
+                    PreJobs.level.put(p.getName() + "_" + s, (long) 1);
                 }
                 list_string.add(s + "=" + PreJobs.level.get(p.getName() + "_" + s));
             }
@@ -96,7 +96,7 @@ public class PreJobs {
             for (String s : jobs) {
                 s = s.replace(".yml", "");
                 if (!PreJobs.xp.containsKey(p.getName() + "_" + s)) {
-                    PreJobs.xp.put(p.getName() + "_" + s, 0L);
+                    PreJobs.xp.put(p.getName() + "_" + s, (long) 0);
                 }
                 list_string.add(s + "=" + PreJobs.xp.get(p.getName() + "_" + s));
             }
