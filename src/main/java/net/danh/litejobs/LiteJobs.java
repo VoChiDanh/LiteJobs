@@ -5,6 +5,7 @@ import net.danh.litejobs.API.Data.PreJobs;
 import net.danh.litejobs.API.Database.Database;
 import net.danh.litejobs.API.Database.SQLite;
 import net.danh.litejobs.API.Manager.CooldownManager;
+import net.danh.litejobs.API.NMS.NMSAssistant;
 import net.danh.litejobs.API.Resource.File;
 import net.danh.litejobs.API.WorldGuard.WorldGuard;
 import net.danh.litejobs.Command.MainCMD;
@@ -56,6 +57,7 @@ public final class LiteJobs extends JavaPlugin {
     public void onLoad() {
         liteJobs = this;
         simpleConfigurationManager = XConfigBukkit.newConfigurationManager(liteJobs);
+        getServer().getLogger().log(Level.INFO, "Detected Server Version " + new NMSAssistant().getNMSVersion());
         WorldGuard.register(liteJobs);
     }
 

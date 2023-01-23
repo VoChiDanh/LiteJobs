@@ -1,5 +1,6 @@
 package net.danh.litejobs.API.Data;
 
+import net.danh.litejobs.API.Manager.Utils;
 import net.danh.litejobs.API.Resource.File;
 import net.danh.litejobs.LiteJobs;
 import net.danh.litejobs.PlayerData.PlayerData;
@@ -35,13 +36,13 @@ public class PreJobs {
                         if (levels[i] != null) {
                             String[] level = levels[i].split("=");
                             if (level[0].equalsIgnoreCase(job)) {
-                                atomicLevel.set(Long.parseLong(level[1]));
+                                atomicLevel.set(Utils.getLong(level[1]));
                             }
                         }
                         if (XPs[i] != null) {
                             String[] xp = XPs[i].split("=");
                             if (xp[0].equalsIgnoreCase(job)) {
-                                atomicXP.set(Long.parseLong(xp[1]));
+                                atomicXP.set(Utils.getLong(xp[1]));
                             }
                         }
                     }
@@ -65,6 +66,9 @@ public class PreJobs {
             List<String> list_string = new ArrayList<>();
             for (String s : jobs) {
                 s = s.replace(".yml", "");
+                if (!PreJobs.level.containsKey(p.getName() + "_" + s)) {
+                    PreJobs.level.put(p.getName() + "_" + s, 1L);
+                }
                 list_string.add(s + "=" + PreJobs.level.get(p.getName() + "_" + s));
             }
             pstring.put(p, list_string);
@@ -91,6 +95,9 @@ public class PreJobs {
             List<String> list_string = new ArrayList<>();
             for (String s : jobs) {
                 s = s.replace(".yml", "");
+                if (!PreJobs.xp.containsKey(p.getName() + "_" + s)) {
+                    PreJobs.xp.put(p.getName() + "_" + s, 0L);
+                }
                 list_string.add(s + "=" + PreJobs.xp.get(p.getName() + "_" + s));
             }
             pstring.put(p, list_string);
