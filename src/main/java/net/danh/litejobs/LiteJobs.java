@@ -57,7 +57,7 @@ public final class LiteJobs extends JavaPlugin {
     public void onLoad() {
         liteJobs = this;
         simpleConfigurationManager = XConfigBukkit.newConfigurationManager(liteJobs);
-        getServer().getLogger().log(Level.INFO, "Detected Server Version " + new NMSAssistant().getNMSVersion());
+        getLogger().log(Level.INFO, "Detected Server Version " + new NMSAssistant().getNMSVersion());
         WorldGuard.register(liteJobs);
     }
 
