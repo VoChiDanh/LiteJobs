@@ -1,4 +1,4 @@
-displayname: "&bFarmer"
+displayname: '&bFarmer'
 level: farming
 item:
   mmoitems:
@@ -7,32 +7,23 @@ item:
 listeners:
   block-break:
     WHEAT:
-      regen: 20
+      regen: 10
       regen_block: AIR
       command:
-        - "eco give %player_name% 1"
-    CARROTS:
-      regen: 20
-      regen_block: AIR
-      command:
-        - "eco give %player_name% 1"
-    POTATOES:
-      regen: 20
-      regen_block: AIR
-      command:
-        - "eco give %player_name% 1"
+        - mi give material WHEAT %player_name% 1 0 100 0 s
     BEETROOTS:
-      regen: 20
+      regen: 10
       regen_block: AIR
       command:
-        - "eco give %player_name% 1"
-    NETHER_WART:
-      regen: 20
+        - mi give material BEETROOT %player_name% 1 0 100 0 s
+    CARROTS:
+      regen: 10
       regen_block: AIR
       command:
-        - "eco give %player_name% 1"
-    CACTUS:
-      regen: 20
+        - mi give material CARROTS %player_name% 1 0 100 0 s
+    POTATOES:
+      regen: 10
       regen_block: AIR
       command:
-        - "eco give %player_name% 1"
+        - mi give material POTATOES %player_name% 1 0 100 0 s
+
