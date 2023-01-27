@@ -19,7 +19,7 @@ public class WorldGuard {
         Plugin worldGuard = Bukkit.getServer().getPluginManager().getPlugin("WorldGuard");
         if (worldGuard != null) {
             WorldGuardWrapper wrapper = WorldGuardWrapper.getInstance();
-            Optional<IWrappedFlag<WrappedState>> miningFlag = wrapper.registerFlag("litejobs-block-break", WrappedState.class, WrappedState.ALLOW);
+            Optional<IWrappedFlag<WrappedState>> miningFlag = wrapper.registerFlag("litejobs-block-break", WrappedState.class, WrappedState.DENY);
             miningFlag.ifPresent(wrappedStateIWrappedFlag -> plugin.getLogger().log(Level.INFO, "Registered flag " + wrappedStateIWrappedFlag.getName()));
         }
     }
@@ -30,7 +30,7 @@ public class WorldGuard {
             return true;
         }
 
-        WrappedState state = WorldGuardWrapper.getInstance().queryFlag(player, loc, flag).orElse(WrappedState.ALLOW);
+        WrappedState state = WorldGuardWrapper.getInstance().queryFlag(player, loc, flag).orElse(WrappedState.DENY);
         if (state == WrappedState.DENY) {
             e.setCancelled(true);
             return false;
