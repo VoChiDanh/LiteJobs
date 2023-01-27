@@ -181,4 +181,57 @@ public class PreJobs {
 
         return playerStats;
     }
+
+    public static long getXP(Player p) {
+        return xp.get(getStringData(p));
+    }
+
+    public static String getStringData(Player p) {
+        return p.getName() + "_" + job.get(p);
+    }
+
+    public static void addXP(Player p, long amount) {
+        Jobs jobs = new Jobs(job.get(p));
+        long max = jobs.getXPCalculator(p);
+        long replace = getXP(p) + amount;
+        if (replace < max) {
+            xp.replace(getStringData(p), replace);
+        } else {
+            xp.replace(getStringData(p), 0L);
+        }
+    }
+
+    public static void removeXP(Player p, long amount) {
+        Jobs jobs = new Jobs(job.get(p));
+        long max = jobs.getXPCalculator(p);
+        long replace = getXP(p) - amount;
+        if (replace <= max && replace > 0) {
+            xp.replace(getStringData(p), replace);
+        }
+    }
+
+    public static long getLevel(Player p) {
+        return level.get(getStringData(p));
+    }
+
+
+    public static void addLevel(Player p, long amount) {
+        Jobs jobs = new Jobs(job.get(p));
+        long max = jobs.getXPCalculator(p);
+        long replace = getLevel(p) + amount;
+        if (replace < max) {
+            level.replace(getStringData(p), replace);
+        } else {
+            level.replace(getStringData(p), 0L);
+        }
+    }
+
+    public static void removeLevel(Player p, long amount) {
+        Jobs jobs = new Jobs(job.get(p));
+        long max = jobs.getXPCalculator(p);
+        long replace = getLevel(p) - amount;
+        if (replace <= max && replace > 0) {
+            level.replace(getStringData(p), replace);
+        }
+    }
 }

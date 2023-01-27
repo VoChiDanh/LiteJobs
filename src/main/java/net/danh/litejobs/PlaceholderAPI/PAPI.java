@@ -35,6 +35,15 @@ public class PAPI extends PlaceholderExpansion {
             if (args.equalsIgnoreCase("job")) {
                 return new Jobs(PreJobs.job.get(p)).getDisplayName();
             }
+            if (args.equalsIgnoreCase("level")) {
+                return String.valueOf(PreJobs.level.get(p.getName() + "_" + PreJobs.job.get(p)));
+            }
+            if (args.equalsIgnoreCase("xp")) {
+                return String.valueOf(PreJobs.xp.get(p.getName() + "_" + PreJobs.job.get(p)));
+            }
+            if (args.equalsIgnoreCase("xp_max")) {
+                return String.valueOf(new Jobs(PreJobs.job.get(p)).getXPCalculator(p));
+            }
         }
         return null;
     }
