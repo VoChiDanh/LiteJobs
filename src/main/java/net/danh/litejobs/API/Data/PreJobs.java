@@ -198,6 +198,7 @@ public class PreJobs {
             xp.replace(getStringData(p), replace);
         } else {
             xp.replace(getStringData(p), 0L);
+            addLevel(p, 1);
         }
     }
 

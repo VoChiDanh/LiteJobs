@@ -49,9 +49,9 @@ public class BlockBreak implements Listener {
                                     if (!(e.getBlock().getBlockData() instanceof Ageable)) {
                                         locations.add(location);
                                         blocks.put(location, e.getBlock().getType());
+                                        CooldownManager.setCooldown(location, regen);
                                         e.getBlock().setType(material);
                                         e.setDropItems(false);
-                                        CooldownManager.setCooldown(location, regen);
                                         CMDs.forEach(cmd -> {
                                             cmd = PlaceholderAPI.setPlaceholders(p, cmd);
                                             cmd = cmd.replace("<level>", String.valueOf(level));
