@@ -18,7 +18,6 @@ import net.xconfig.bukkit.model.SimpleConfigurationManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.Contract;
@@ -86,7 +85,6 @@ public final class LiteJobs extends JavaPlugin {
         getServer().getOnlinePlayers().forEach(PreJobs::loadPlayerData);
         getLogger().log(Level.INFO, "Loaded PlayerData");
         getLogger().log(Level.INFO, "Loaded Complete");
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(liteJobs, () -> Bukkit.getOnlinePlayers().forEach(liteJobs::syncXPBar), 0L, 1L);
         Bukkit.getScheduler().scheduleSyncRepeatingTask(liteJobs, () -> {
             if (!BlockBreak.locations.isEmpty()) {
                 for (int i = 0; i < BlockBreak.locations.size(); i++) {
@@ -126,16 +124,6 @@ public final class LiteJobs extends JavaPlugin {
 
     private void registerListeners(Listener... listeners) {
         Arrays.stream(listeners).collect(Collectors.toList()).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, liteJobs));
-    }
-
-    public void syncXPBar(Player p) {
-        float xp = PreJobs.xp.get(p.getName() + "_" + PreJobs.job.get(p));
-        float level = PreJobs.level.get(p.getName() + "_" + PreJobs.job.get(p));
-        float req = new Jobs(PreJobs.job.get(p)).getXPCalculator(p);
-        if ((xp / req) <= 1 && (xp / req) >= 0) {
-            p.setExp(xp / req);
-            p.setLevel((int) level);
-        }
     }
 
 }
