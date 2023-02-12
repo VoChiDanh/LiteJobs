@@ -1,4 +1,4 @@
-displayname: '&bMiner'
+displayname: '&bThợ Mỏ'
 level: mining
 item:
   mmoitems:
@@ -6,33 +6,33 @@ item:
     id: CUPTHOMO
 listeners:
   block-break:
-    DEEPSLATE_GOLD_ORE:
-      regen: 200
+    GOLD_ORE:
+      regen: 50
       regen_block: BEDROCK
       command:
         - mi give material DEEPSLATE_GOLD_ORE %player_name% 1 0 100 0 s
-    DEEPSLATE_EMERALD_ORE:
-      regen: 400
+    EMERALD_ORE:
+      regen: 120
       regen_block: BEDROCK
       command:
         - mi give material DEEPSLATE_EMERALD_ORE %player_name% 1 0 100 0 s
     MOSSY_COBBLESTONE:
-      regen: 10
+      regen: 20
       regen_block: BEDROCK
       command:
         - mi give material MOSSY_COBBLESTONE %player_name% 1 0 100 0 s
-    DEEPSLATE_IRON_ORE:
-      regen: 100
+    IRON_ORE:
+      regen: 40
       regen_block: BEDROCK
       command:
         - mi give material DEEPSLATE_IRON_ORE %player_name% 1 0 100 0 s
-    DEEPSLATE_DIAMOND_ORE:
-      regen: 300
+    DIAMOND_ORE:
+      regen: 60
       regen_block: BEDROCK
       command:
         - mi give material DEEPSLATE_DIAMOND_ORE %player_name% 1 0 100 0 s
-    DEEPSLATE_COAL_ORE:
-      regen: 50
+    COAL_ORE:
+      regen: 30
       regen_block: BEDROCK
       command:
         - mi give material DEEPSLATE_COAL_ORE %player_name% 1 0 100 0 s

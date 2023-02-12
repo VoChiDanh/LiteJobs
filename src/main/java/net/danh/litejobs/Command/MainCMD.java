@@ -4,9 +4,11 @@ import net.danh.litejobs.API.CMD.CMDBase;
 import net.danh.litejobs.API.Data.Jobs;
 import net.danh.litejobs.API.Data.PreJobs;
 import net.danh.litejobs.API.Resource.File;
+import net.danh.litejobs.Listeners.BlockBreak;
 import net.danh.litejobs.LiteJobs;
 import net.xconfig.bukkit.TextUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
@@ -72,6 +74,13 @@ public class MainCMD extends CMDBase {
                 }
             }
             if (args.length == 1) {
+                if (args[0].equalsIgnoreCase("regen")) {
+                    for (Location location : BlockBreak.locations) {
+                        location.getBlock().setType(BlockBreak.blocks.get(location));
+                    }
+                    BlockBreak.locations.clear();
+                    BlockBreak.blocks.clear();
+                }
                 if (args[0].equalsIgnoreCase("reload")) {
                     File.reloadFile();
                     c.sendMessage(TextUtils.colorize(LiteJobs.getPrefix() + File.getMessage().getString("command.reload")));

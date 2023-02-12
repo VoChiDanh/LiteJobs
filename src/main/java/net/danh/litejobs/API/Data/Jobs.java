@@ -18,11 +18,10 @@ public class Jobs {
     public Jobs(String name) {
         if (!name.contains(".yml")) {
             this.name = name;
-            this.fileConfiguration = LiteJobs.getSimpleConfigurationManager().file("Jobs", name + ".yml");
         } else {
             this.name = name.replace(".yml", "");
-            this.fileConfiguration = LiteJobs.getSimpleConfigurationManager().file("Jobs", name);
         }
+        this.fileConfiguration = LiteJobs.getSimpleConfigurationManager().file("Jobs", this.name + ".yml");
     }
 
     public String getName() {
