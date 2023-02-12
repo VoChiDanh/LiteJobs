@@ -90,12 +90,8 @@ public final class LiteJobs extends JavaPlugin {
                 for (int i = 0; i < BlockBreak.locations.size(); i++) {
                     Location location = BlockBreak.locations.get(i);
                     int times = CooldownManager.getCooldown(location);
-                    if (Math.abs(times) >= 0) {
+                    if (Math.abs(times) > 0) {
                         CooldownManager.setCooldown(location, --times);
-                        Material block_type = BlockBreak.blocks.get(location);
-                        location.getBlock().setType(block_type != null ? block_type : Material.AIR);
-                        BlockBreak.blocks.remove(location, block_type);
-                        BlockBreak.locations.remove(location);
                     } else {
                         Material block_type = BlockBreak.blocks.get(location);
                         location.getBlock().setType(block_type != null ? block_type : Material.AIR);
