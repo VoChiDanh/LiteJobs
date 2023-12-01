@@ -1,10 +1,10 @@
-package net.danh.litejobs.API.Manager;
+package net.danh.litejobs.API.Utils;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Utils {
+public class Number {
 
     private static final String[] suffix = new String[]{"", "K", "M", "B", "T", "Q"};
     private static final int MAX_LENGTH = 4;

@@ -4,9 +4,9 @@ import net.danh.litejobs.API.CMD.CMDBase;
 import net.danh.litejobs.API.Data.Jobs;
 import net.danh.litejobs.API.Data.PreJobs;
 import net.danh.litejobs.API.Resource.File;
+import net.danh.litejobs.API.Utils.Chat;
 import net.danh.litejobs.Listeners.BlockBreak;
 import net.danh.litejobs.LiteJobs;
-import net.xconfig.bukkit.TextUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
@@ -38,7 +38,7 @@ public class MainCMD extends CMDBase {
                                 job = job.replace(".yml", "");
                                 if (job.equalsIgnoreCase(args[1])) {
                                     PreJobs.job.put(p, job);
-                                    p.sendMessage(TextUtils.colorize(Objects.requireNonNull(File.getMessage().getString("command.select")).replace("<name>", new Jobs(job).getDisplayName())));
+                                    p.sendMessage(Chat.colorize(Objects.requireNonNull(File.getMessage().getString("command.select")).replace("<name>", new Jobs(job).getDisplayName())));
                                 }
                             });
                         }
@@ -55,7 +55,7 @@ public class MainCMD extends CMDBase {
                                 job = job.replace(".yml", "");
                                 if (job.equalsIgnoreCase(args[1])) {
                                     PreJobs.job.put(p, job);
-                                    p.sendMessage(TextUtils.colorize(LiteJobs.getPrefix() + Objects.requireNonNull(File.getMessage().getString("command.select")).replace("<name>", new Jobs(job).getDisplayName())));
+                                    p.sendMessage(Chat.colorize(LiteJobs.getPrefix() + Objects.requireNonNull(File.getMessage().getString("command.select")).replace("<name>", new Jobs(job).getDisplayName())));
                                 }
                             });
                         }
@@ -67,7 +67,7 @@ public class MainCMD extends CMDBase {
                         if (jobs != null) {
                             if (!jobs.isEmpty()) {
                                 jobs.forEach(job -> new Jobs(job).reload());
-                                c.sendMessage(TextUtils.colorize(LiteJobs.getPrefix() + File.getMessage().getString("command.reload")));
+                                c.sendMessage(Chat.colorize(LiteJobs.getPrefix() + File.getMessage().getString("command.reload")));
                             }
                         }
                     }
@@ -83,7 +83,7 @@ public class MainCMD extends CMDBase {
                 }
                 if (args[0].equalsIgnoreCase("reload")) {
                     File.reloadFile();
-                    c.sendMessage(TextUtils.colorize(LiteJobs.getPrefix() + File.getMessage().getString("command.reload")));
+                    c.sendMessage(Chat.colorize(LiteJobs.getPrefix() + File.getMessage().getString("command.reload")));
                 }
             }
         }

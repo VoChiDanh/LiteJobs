@@ -3,7 +3,7 @@ package net.danh.litejobs.PlaceholderAPI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import net.danh.litejobs.API.Data.Jobs;
 import net.danh.litejobs.API.Data.PreJobs;
-import net.danh.litejobs.API.Manager.Utils;
+import net.danh.litejobs.API.Utils.Number;
 import net.danh.litejobs.LiteJobs;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -46,13 +46,13 @@ public class PAPI extends PlaceholderExpansion {
                 return String.valueOf(new Jobs(PreJobs.job.get(p)).getXPCalculator(p));
             }
             if (args.equalsIgnoreCase("level_format")) {
-                return Utils.format(PreJobs.level.get(p.getName() + "_" + PreJobs.job.get(p)));
+                return Number.format(PreJobs.level.get(p.getName() + "_" + PreJobs.job.get(p)));
             }
             if (args.equalsIgnoreCase("xp_format")) {
-                return Utils.format(PreJobs.xp.get(p.getName() + "_" + PreJobs.job.get(p)));
+                return Number.format(PreJobs.xp.get(p.getName() + "_" + PreJobs.job.get(p)));
             }
             if (args.equalsIgnoreCase("xp_max_format")) {
-                return Utils.format(new Jobs(PreJobs.job.get(p)).getXPCalculator(p));
+                return Number.format(new Jobs(PreJobs.job.get(p)).getXPCalculator(p));
             }
         }
         return null;

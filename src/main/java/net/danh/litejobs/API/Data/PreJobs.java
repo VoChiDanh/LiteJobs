@@ -1,7 +1,7 @@
 package net.danh.litejobs.API.Data;
 
-import net.danh.litejobs.API.Manager.Utils;
 import net.danh.litejobs.API.Resource.File;
+import net.danh.litejobs.API.Utils.Number;
 import net.danh.litejobs.LiteJobs;
 import net.danh.litejobs.PlayerData.PlayerData;
 import org.bukkit.entity.Player;
@@ -36,13 +36,13 @@ public class PreJobs {
                         if (levels[i] != null) {
                             String[] level = levels[i].split("=");
                             if (level[0].equalsIgnoreCase(job)) {
-                                atomicLevel.set(Math.max(Utils.getLong(level[1]), 1));
+                                atomicLevel.set(Math.max(Number.getLong(level[1]), 1));
                             }
                         }
                         if (XPs[i] != null) {
                             String[] xp = XPs[i].split("=");
                             if (xp[0].equalsIgnoreCase(job)) {
-                                atomicXP.set(Utils.getLong(xp[1]));
+                                atomicXP.set(Number.getLong(xp[1]));
                             }
                         }
                     }

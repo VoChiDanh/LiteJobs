@@ -3,8 +3,9 @@ package net.danh.litejobs.API.Data;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.danh.litejobs.API.Calculator.Calculator;
 import net.danh.litejobs.API.Resource.File;
+import net.danh.litejobs.API.Utils.Chat;
 import net.danh.litejobs.LiteJobs;
-import net.xconfig.bukkit.TextUtils;
+import net.xconfig.bukkit.model.SimpleConfigurationManager;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
@@ -21,7 +22,7 @@ public class Jobs {
         } else {
             this.name = name.replace(".yml", "");
         }
-        this.fileConfiguration = LiteJobs.getSimpleConfigurationManager().file("Jobs", this.name + ".yml");
+        this.fileConfiguration = SimpleConfigurationManager.get().get("Jobs/" + this.name + ".yml");
     }
 
     public String getName() {
@@ -33,22 +34,22 @@ public class Jobs {
     }
 
     public void load() {
-        LiteJobs.getSimpleConfigurationManager().buildCustom("Jobs", name + ".yml");
+        SimpleConfigurationManager.get().build("", false, "Jobs/" + name + ".yml");
         LiteJobs.getLiteJobs().getLogger().log(Level.INFO, "Loaded " + name + " Job!");
     }
 
     public void save() {
         if (fileConfiguration == null) load();
-        LiteJobs.getSimpleConfigurationManager().save("Jobs", name + ".yml");
+        SimpleConfigurationManager.get().save("Jobs/" + name + ".yml");
     }
 
     public void reload() {
         if (fileConfiguration == null) load();
-        LiteJobs.getSimpleConfigurationManager().reload("Jobs", name + ".yml");
+        SimpleConfigurationManager.get().reload("Jobs/" + name + ".yml");
     }
 
     public String getDisplayName() {
-        return TextUtils.colorize(Objects.requireNonNull(fileConfiguration.getString("displayname")));
+        return Chat.colorize(Objects.requireNonNull(fileConfiguration.getString("displayname")));
     }
 
     public Long getXPCalculator(Player p) {

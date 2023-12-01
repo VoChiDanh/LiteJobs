@@ -7,13 +7,12 @@ import net.danh.litejobs.API.Database.SQLite;
 import net.danh.litejobs.API.Manager.CooldownManager;
 import net.danh.litejobs.API.NMS.NMSAssistant;
 import net.danh.litejobs.API.Resource.File;
+import net.danh.litejobs.API.Utils.Chat;
 import net.danh.litejobs.API.WorldGuard.WorldGuard;
 import net.danh.litejobs.Command.MainCMD;
 import net.danh.litejobs.Listeners.BlockBreak;
 import net.danh.litejobs.Listeners.JoinQuit;
 import net.danh.litejobs.PlaceholderAPI.PAPI;
-import net.xconfig.bukkit.TextUtils;
-import net.xconfig.bukkit.XConfigBukkit;
 import net.xconfig.bukkit.model.SimpleConfigurationManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -27,21 +26,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
-import java.util.stream.Collectors;
 
 public final class LiteJobs extends JavaPlugin {
 
     private static String prefix;
     private static LiteJobs liteJobs;
     private static Database database;
-    private static SimpleConfigurationManager simpleConfigurationManager;
 
     public static LiteJobs getLiteJobs() {
         return liteJobs;
-    }
-
-    public static SimpleConfigurationManager getSimpleConfigurationManager() {
-        return simpleConfigurationManager;
     }
 
     @Contract(pure = true)
@@ -56,7 +49,7 @@ public final class LiteJobs extends JavaPlugin {
     @Override
     public void onLoad() {
         liteJobs = this;
-        simpleConfigurationManager = XConfigBukkit.newConfigurationManager(liteJobs);
+        SimpleConfigurationManager.register(liteJobs);
         getLogger().log(Level.INFO, "Detected Server Version " + new NMSAssistant().getNMSVersion());
         WorldGuard.register(liteJobs);
     }
@@ -67,8 +60,8 @@ public final class LiteJobs extends JavaPlugin {
         getLogger().log(Level.INFO, "Registered Main Command");
         File.createFiles();
         getLogger().log(Level.INFO, "Loaded Files");
-        prefix = TextUtils.colorize(Objects.requireNonNull(File.getConfig().getString("prefix")));
-        getLogger().log(Level.INFO, "Loaded Prefix " + TextUtils.colorize(prefix));
+        prefix = Chat.colorize(Objects.requireNonNull(File.getConfig().getString("prefix")));
+        getLogger().log(Level.INFO, "Loaded Prefix " + Chat.colorize(prefix));
         database = new SQLite(liteJobs);
         database.load();
         getLogger().log(Level.INFO, "Loaded Database");
@@ -119,7 +112,7 @@ public final class LiteJobs extends JavaPlugin {
     }
 
     private void registerListeners(Listener... listeners) {
-        Arrays.stream(listeners).collect(Collectors.toList()).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, liteJobs));
+        Arrays.stream(listeners).toList().forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, liteJobs));
     }
 
 }
